@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.bgimg {
+  background-image: url('raspust.png');
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+}
+
+.topleft {
+  position: absolute;
+  left: 44%;
+  top: 0;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h1 {
+	letter-spacing: 20px;
+}
+
+hr {
+  border: 2px solid #ffffff;
+  width: 40%;
+}
+</style>
+<body>
+
+<div class="bgimg">
+  <div class="topleft">
+    <p class="text-center">VII-4</p>
+  </div>
+  <div class="middle">
+    <h1>Do zimskog raspusta:</h1>
+    <hr>
+    <p id="demo" style="font-size:30px"></p>
+  </div>
+</div>
+<script>
+// Setovanje do kada ce da broji
+var countDownDate = new Date("Dec 27, 2019 18:20:00").getTime();
+
+// Apdejtovanje timera svake sekunde
+var countdownfunction = setInterval(function() {
+
+  // Ovako uzimate danasnji datum
+  var now = new Date().getTime();
+  
+  // Distanca countDownDate i now
+  var distance = countDownDate - now;
+  
+  // Kalkulacije vremena za dane, sate, minute i sekunde
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+  // Output dana, sata, minuta i sekundi na ekranu
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+  
+  // Kada se odbrojavanje zavrsi izbacice "GOTOVA ŠKOLA"
+  if (distance < 0) {
+    clearInterval(countdownfunction);
+    document.getElementById("demo").innerHTML = "GOTOVA ŠKOLA!";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
